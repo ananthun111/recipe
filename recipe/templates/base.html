@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="theme-dark">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% block head %}
+    <title>Recipe book | created by ananthu</title>
+    {% endblock head %}
+    {% block loadcss %}
+    {% endblock loadcss %}
+</head>
+<body>
+    <style>
+        {% block css %}{% endblock css %}
+    </style>
+    {% block body %}
+        {% block navbar %}
+            <nav>
+                <a href="{% url 'home' %}">
+                <div class="logo">
+                    
+                    <img src="{% static './assets/images/logo.png' %}" alt="logo">
+                    <h1>Recipe Book</h1>
+                    
+                </div>
+                </a>
+                <div class="menu">
+                    <div class="item">
+                        <a href="{% url 'home' %}">
+                        <i class="fa-solid fa-grip-vertical"></i>
+                        <label for="Home">Home</label>
+                        </a>
+                    </div>
+                    
+                    <div class="item">
+                        <a href="{% url 'Recipes' %}">
+                        <i class="fa-solid fa-bowl-food"></i>
+                        <label for="Recipes">Recipes</label>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="{% url 'Bookmark' %}">
+                        <i class="fa fa-bookmark" aria-hidden="true"></i>
+                        <label for="Bookmark">Bookmark</label>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="{% url 'Privacy_Policy' %}">
+                        <i class="fa fa-shield" aria-hidden="true"></i>
+                        <label for="Privacy Policy">Privacy Policy</label>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="{% url 'terms_and_condition' %}">
+                            <i class="fa-solid fa-file-circle-check"></i>
+                        <label for="terms_and_condition">Terms and condition</label>
+                        </a>
+                    </div>
+                    <div class="item but">
+                        <a href="{% url 'Courses' %}">
+                        <img src="{% static './assets/images/ic_outline-rocket.png' %}" alt="Courses">
+                        <label for="Courses">Submite Recipe</label>
+                        </a>
+                    </div>
+                </div>
+                <div class="end">
+                    <div class="item">
+                        <a href="{% url 'Account' %}">
+                        <img src="{% static './assets/images/codicon_account.png' %}" alt="Account">
+                        <label for="Account">Account</label>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="{% url 'user_settings' %}">
+                        <img src="{% static './assets/images/akar-icons_settings-vertical.png' %}" alt="Settings">
+                        <label for="Settings">Settings</label>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        {% endblock navbar %}
+        {% block mainblock %}
+        {% endblock mainblock %}
+        {% block footerblock %}
+        {% endblock footerblock %}
+        {% block loadjs %}
+        {% endblock loadjs %}
+    {% endblock body %}
+</body>
+</html>

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% comment %} {% block head %}
+
+{% endblock head %} {% endcomment %}
+{% block loadcss %}
+<link rel="stylesheet" href="{% static '/assets/css/style.css' %}" text/css" />
+{% endblock loadcss %}
+
+{% block mainblock %}
+<div class="main">
+    <form class="searchbar" action="{% url 'home' %}">
+        <input type="search" name="search" placeholder="Looking for..." id="search"/>
+        <img id="searchicon"src="{% static './assets/images/ant-design_search-outlined.png' %}"  alt="search">
+        <button class="search" type="submit"> search
+            {% comment %} <img src="{% static './assets/images/charm_filter.png' %}" alt="filter"> {% endcomment %}
+        </button>
+    </form>
+    <section class="latestposts">
+        <h2>Latest posts</h2>
+        <div class="cardlayout">
+            {% for post in posts %}
+                <div class="card">
+                    <div class="imagwap">
+                        <a href="{% url 'home' %}{{ post.type.slug }}/{{ post.slug }}/ ">
+                        <img src="{{ post.thumbnail }}" alt="">
+                        </a>
+                    </div>
+                    <div class="contentwrap">
+                        <div class="top">
+                            <div class="rating">
+                                <div class="star1">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                </div>
+                                
+                            </div>
+                            <div class="bookmark">
+                                <i class="fa fa-bookmark" aria-hidden="true"></i>
+                                <!-- <i class="fa fa-bookmark-o" aria-hidden="true"></i> -->
+                            </div>
+                        </div>
+                        <a href="{% url 'home' %}{{ post.type.slug }}/{{ post.slug }}/ ">
+                        <div class="heading">{{post.title}}</div>
+                        {% comment %} <div class="badges">
+                            <div class="badg">test</div>
+                            <div class="badg">testing</div>
+                        </div> {% endcomment %}
+                        <div class="discription">{{post.meta_description}}</div>
+                        </a>
+                        <div class="footer">
+                            <div class="publicdate">{{post.updated_on}}</div>
+                            <div class="author">{{post.author}}</div>
+                        </div>
+                    
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+<div class="sidebar"></div>
+{% endblock mainblock %}
